@@ -1,0 +1,123 @@
+<!doctype html>
+
+<!-- HTML con motor Thymeleaf -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HEAD -->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+
+<!-- ESTILOS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="./css/ppCss.css">
+<link rel="icon"
+	href="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+	crossorigin="anonymous">
+
+<!-- TITULO -->
+<title>ZENGYM</title>
+</head>
+<!-- HEAD -->
+
+<!--BODY-->
+<body>
+
+	<!--NAV-->
+	<header>
+
+		<!-- NAVEGACION -->
+		<input type="checkbox" id="btn-menu">
+		<label class="hamb" for="btn-menu"><img src="icono-menu2.png" alt=""></label>
+		
+		<nav class="navbar fixed-top navbar-expand-lg navbar-transparent">
+			<a class="navbar-brand" href="./home">ZENGYM</a>
+			<div class="menu" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{./clases}">CLASES</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./nuevaCita}">ALIMENTACIÓN</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./galeria}">GALERÍA</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./productos}">NUESTROS PRODUCTOS</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./miscitas}">PERFIL</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<section class="galeria">
+		<div class="text-center pt-5">
+			<h1>GALERÍA</h1>
+			<p>Una imagen vale más que mil palabras, y por eso queremos
+				mostrarte una selecció de imagenes en las que poder ver nuestras
+				instalaciones, como impartimos las clases, excursiones y salidas con
+				el centro ZENGYM... y así animarte a no perderte ningún evento.</p>
+		</div>
+
+		<div class="container-imgg">
+		
+		<div class="ful-img" id="fulImgBox">
+			<img src="../img/instalaciones1.jpg" id="fulImg" alt="">
+			<span onclick="closeImg()">X</span>
+		</div>
+		
+			<h4 class="titulo2">
+				<span>NUESTRAS INSTALACIONES</span>
+			</h4>
+			<div class="img-gallery">
+				<img src="../img/instalaciones1.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/instalaciones2.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/instalaciones3.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/instalaciones4.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/instalaciones5.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/instalaciones6.jpg" onclick="openFulImg(this.src)" alt="">
+			</div>
+			
+			<h4 class="titulo2">
+				<span>ALGUNAS DE NUESTRAS CLASES</span>
+			</h4>
+			<div class="img-gallery">
+				<img src="../img/clases1.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/clases2.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/clases3.jpg" onclick="openFulImg(this.src)" alt="">
+				<img src="../img/clases4.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/clases5.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/clases6.jpg" onclick="openFulImg(this.src)" alt="">  
+			</div>
+			
+			<h4 class="titulo2">
+				<span>¿TE VIENES DE EXCURSIÓN?</span>
+			</h4>
+			<div class="img-gallery">
+				<img src="../img/excursion1.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/excursion2.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/excursion3.jpg" onclick="openFulImg(this.src)" alt="">
+				<img src="../img/excursion4.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/excursion5.jpg" onclick="openFulImg(this.src)" alt=""> 
+				<img src="../img/excursion6.jpg" onclick="openFulImg(this.src)" alt="">  
+			</div>
+			
+		</div>
+
+	</section>
+
+</body>
+<!--BODY-->
+
+<!--SCRIPT-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<script src="./js/ppJs.js" language="javascript" type="text/javascript"></script>
+<!--SCRIPT-->
+
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+
+<!-- HTML con motor Thymeleaf -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HEAD -->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+
+<!-- ESTILOS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="./css/ppCss.css">
+<link rel="icon"
+	href="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+	crossorigin="anonymous">
+
+<!-- TITULO -->
+<title>ZENGYM</title>
+</head>
+<!-- HEAD -->
+
+<!--BODY-->
+<body>
+
+	<!--NAV-->
+	<header>
+		<div class="shape"></div>
+
+		<!-- NAVEGACION -->
+		<input type="checkbox" id="btn-menu">
+		<label class="hamb" for="btn-menu"><img src="icono-menu2.png" alt=""></label>
+		
+		<nav class="navbar fixed-top navbar-expand-lg navbar-transparent">
+			<a class="navbar-brand" href="./home">ZENGYM</a>
+			<div class="menu" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{./clases}">CLASES</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./nuevaCita}">ALIMENTACIÓN</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./galeria}">GALERÍA</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./productos}">NUESTROS PRODUCTOS</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./miscitas}">PERFIL</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 left-side">
+					<img src="../img/logoflor.jpg" class="w-100">
+				</div>
+				<div class="col-md-6 right-side">
+					<form th:action="@{./cita}" method="POST">
+						<div class="form-group">
+							<label for="inp">Profesional</label> <select class="form-control"
+								id="profeId" name="profeId">
+								<option th:each="professional : ${professionals}"
+									th:value="${professional.userId}"
+									th:text="${professional.name}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inpDate">Día</label> 
+							<input
+								required="required" type="date" class="form-control"
+								id="inpDate" name="newDate">
+						</div>
+						<div class="form-group">
+							<label for="inpTime">Hora</label> 
+							<select name="newTime">
+							  <option value="08:00">08:00 AM</option>
+							  <option value="08:30">08:30 AM</option>
+							  <option value="09:00">09:00 AM</option>
+							  <option value="09:30">09:30 AM</option>
+							  <option value="10:00">10:00 AM</option>
+							  <option value="10:30">10:30 AM</option>
+							  <option value="11:00">11:00 AM</option>
+							  <option value="11:30">11:30 AM</option>
+							  <option value="12:00">12:00 PM</option>
+							  <option value="12:30">12:30 PM</option>
+							  <option value="13:00">13:00 PM</option>
+							  <option value="13:30">13:30 PM</option>
+							  <option value="14:00">14:00 PM</option>
+							  <option value="14:30">14:30 PM</option>
+							  <option value="15:00">15:00 PM</option>
+							  <option value="15:30">15:30 PM</option>
+							  <option value="16:00">16:00 PM</option>
+							  <option value="16:30">16:30 PM</option>
+							  <option value="17:00">17:00 PM</option>
+							  <option value="17:30">17:30 PM</option>
+							  <option value="18:00">18:00 PM</option>
+							  <option value="18:30">18:30 PM</option>
+							  <option value="19:00">19:00 PM</option>
+							  <option value="19:30">19:30 PM</option>
+							  <option value="20:00">20:00 PM</option>
+							  <option value="20:30">20:30 PM</option>
+							  <option value="21:00">21:00 PM</option>
+							  <option value="21:30">21:30 PM</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inpDesc">Descripción</label> 
+							<input
+								required="required" type="text" class="form-control"
+								id="inpDesc" name="newDesc">
+						</div>
+						<button type="submit" name="btnNewAppt"
+							class="btn btn-success">Coger cita</button>
+						<a class="btn btn-primary" href="index" role="button"
+							id="btnReturn">Volver</a>
+					</form>
+					<label th:hidden="${apptResultMsgB}" class="alert alert-danger" th:text="${apptResultMsg}"/>
+				</div>
+			</div>
+		</div>
+		<!-- DATOS ALIMENTACIÓN  -->
+		<div class="container-alim">
+			<h5>Seguir una alimentación sana tiene muchos beneficios  
+				como obtener energía, proteger el corazón, mejorar el cerebro, 
+				reduce el estrés, fortalece los huesos, mejora el sistema inmune, ayuda a 
+				mantener la presión arterial… Es por ello que, además poner a su disposición 
+				nuestros mejores profesionales, ofrecemos una serie de consejos alimenticios</h5>
+			
+			<img class="imgAli" src="./img/alimentos.jpg" alt="Alimentos Variados">
+			<h4>Variedad en los grupos de alimentos.</h4>
+			<p>Tu dieta tiene que mantener un equilibrio entre todos los grupos de alimentos
+				. Deben primar las legumbres, los cereales integrales, las verduras y 
+				hortalizas, las frutas, los lácteos y los frutos secos. Te aconsejamos que 
+				consumas con moderación los huevos, grasas saludables (aceite de oliva, 
+				mantequilla…), carnes y pescados. Y, de manera ocasional, los alimentos 
+				procesados, refrescos y dulces. No abuses de la sal, en su lugar, utiliza 
+				condimentos y especias. En el caso de que seas vegetariano, por ejemplo, 
+				si no tomas carne o pescado, puedes cambiar esos alimentos por otros que contengan 
+				proteínas vegetales, como son las legumbres. Si no puedes consumir lácteos, o no te 
+				gustan, hay otros alimentos que contienen calcio, como las espinacas, el brócoli, los 
+				espárragos, el salmón, las sardinas… </p>
+			<img class="imgAli" src="./img/disfCom.jpg" alt="Frutas">
+			<h4>Disfruta de la comida</h4>
+			<p>Es importante que elabores platos con ingredientes variados y que sean atractivos para ti.
+				 En el blog de Oxfam Intermón puedes encontrar multitud de recetas de todo tipo: 
+				 veganas, vegetarianas, cocinas del mundo, etc.</p>
+			<img class="imgAli" src="./img/aliCalidad.jpg" alt="alimCalid">
+			<h4>Elige alimentos de calidad</h4>
+			<p> En la medida de lo posible, descarta los alimentos precocinados o procesados. En su lugar, elabora
+				 tus propias recetas con alimentos frescos y de origen ecológico. Los alimentos 
+				 biológicos han sido producidos y procesados sin productos químicos. Con los productos 
+				 ecológicos no se trata solo de tener una alimentación más saludable y rica en 
+				 nutrientes, sino también de que estén producidos acorde con el medio ambiente menos 
+				 contaminante y respetando la biodiversidad.</p>
+		</div>
+
+<!-- END DATOS ALIMENTACIÓN  -->
+	</header>
+	
+</body>
+<!--BODY-->
+
+<!--SCRIPT-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<!--SCRIPT-->
+
+</html>

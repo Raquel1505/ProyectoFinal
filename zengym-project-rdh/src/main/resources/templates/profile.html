@@ -1,0 +1,141 @@
+<!doctype html>
+
+<!-- HTML con motor Thymeleaf -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HEAD -->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+
+<!-- ESTILOS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="./css/ppCss.css">
+<link rel="icon"
+	href="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+	crossorigin="anonymous">
+
+<!-- TITULO -->
+<title>ZENGYM</title>
+</head>
+<!-- HEAD -->
+
+<!--BODY-->
+<body>
+
+	<!--NAV-->
+	<header>
+		<div class="shape"></div>
+
+		<!-- NAVEGACION -->
+		
+		<input type="checkbox" id="btn-menu">
+		<label class="hamb" for="btn-menu"><img src="icono-menu2.png" alt=""></label>
+		
+		<nav class="navbar fixed-top navbar-expand-lg navbar-transparent">
+			<a class="navbar-brand" href="./home">ZENGYM</a>
+			<div class="menu" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{./clases}">CLASES</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./nuevaCita}">ALIMENTACIÓN</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./galeria}">GALERÍA</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./productos}">NUESTROS PRODUCTOS</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./miscitas}">PERFIL</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 left-side">
+					<img src="../img/logoflor.jpg" class="w-100">
+				</div>
+				<div class="tabla-perfil col-md-6 ">
+				<div class="perfill">
+				<p th:text=" ${session.userLogged.name} + ' estas son tus próximas citas:' " />
+				</div>
+					<table class="table table-perf table-striped table-light">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">ID CITA</th>
+								<th scope="col">FECHA</th>
+								<th scope="col">DESCRIPCIÓN</th>
+								<th scope="col">PROFESIONAL</th>
+								<th scope="col">CLIENTE</th>
+								<th scope="col">ANULAR</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="appt : ${userAppointments}">
+								<tr>
+									<td scope="row" th:text="${appt.appointmentId}" />
+									<td scope="row" th:text="${#dates.format(appt.date, 'dd-MM-yy hh:mm')}" />
+									<td scope="row" th:text="${appt.description}" />
+									<td scope="row" th:text="${appt.customer.name}" />
+									<td scope="row" th:text="${appt.professional.name}" />
+									<td scope="row" th:hidden="${showCustomersViewDropInd}">
+										<form action="actDropAppt" method="post">
+											<button th:disabled="${btnDropApptEnabled}" type="submit"
+												id="btnDropAppt" name="apptId"
+												th:value="${appt.appointmentId}" class="btn btn-danger">▼</button>
+										</form>
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+					<table class="table table-perf  table-striped table-light">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">ID CLASE</th>
+								<th scope="col">DÍA - HORA</th>
+								<th scope="col">MONITOR/A</th>
+								<th scope="col">DESCRIPCIÓN</th>
+								<th scope="col">ANULAR</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="class : ${userClasses}">
+								<tr>
+									<td scope="row" th:text="${class.classId}" />
+									<td scope="row" th:text="${class.dayHour}" />
+									<td scope="row" th:text="${class.instructor}" />
+									<td scope="row" th:text="${class.description}" />
+									<td scope="row" th:hidden="${showCustomersViewDropInd}">
+										<form action="actDropUserClass" method="post">
+											<button th:disabled="${btnDropClassEnabled}" type="submit"
+												id="btnDropClass" name="classId"
+												th:value="${class.classId}" class="btn btn-danger">▼</button>
+										</form>
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+</body>
+<!--BODY-->
+
+<!--SCRIPT-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<!--SCRIPT-->
+
+</html>

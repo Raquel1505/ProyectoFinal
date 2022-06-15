@@ -1,0 +1,228 @@
+<!doctype html>
+
+<!-- HTML con motor Thymeleaf -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HEAD -->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+
+<!-- ESTILOS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="./css/ppCss.css">
+<link rel="icon"
+	href="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+	crossorigin="anonymous">
+
+<!-- TITULO -->
+<title>ZENGYM</title>
+</head>
+<!-- HEAD -->
+
+<!--BODY-->
+<body>
+
+	<!--NAV-->
+	<header>
+
+		<!-- NAVEGACION -->
+		<input type="checkbox" id="btn-menu">
+		<label class="hamb" for="btn-menu"><img src="icono-menu2.png" alt=""></label>
+		
+		<nav class="navbar fixed-top navbar-expand-lg navbar-transparent">
+			<a class="navbar-brand" href="./home">ZENGYM</a>
+			<div class="menu" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{./clases}">CLASES</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./nuevaCita}">ALIMENTACIÓN</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./galeria}">GALERÍA</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./productos}">NUESTROS PRODUCTOS</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{./miscitas}">PERFIL</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<section>
+		<table class="table table-class table-striped ">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">DÍA - HORA</th>
+					<th scope="col">MONITOR/A</th>
+					<th scope="col">DESCRIPCIÓN</th>
+					<th scope="col">APUNTARSE</th>
+					<th scope="col"
+						th:hidden="${session.userLogged['isProfessional']} ? 'false' : 'true'">EDITAR</th>
+					<th scope="col"
+						th:hidden="${session.userLogged['isProfessional']} ? 'false' : 'true'">ELIMINAR</th>
+				</tr>
+			</thead>
+			<tbody>
+
+		<div class="container-class">
+          <h1> CLASES ZENGYM</h1>
+          <details>
+          <summary><h4> EDUCACIÓN POSTURAL</h4></summary>
+          <p>Su propósito es mejorar la consciencia de nuestro cuerpo mediante el despertar
+               de la sensibilidad proprioceptiva, verdadero sexto sentido. Esta facultad 
+               está integrada por el centro nervioso y cerebro, que recibe de nuestras 
+               articulaciones, nuestros músculos y tendones las informaciones referentes a 
+               la posición, la velocidad de los segmentos así que la amplitud de sus 
+               movimientos.
+
+            Se afina nuestras coordinaciones, potenciando el juego sutil entre musculatura 
+            profunda, que desempeña una función postural, y la más periférica que se 
+            utiliza específicamente por los movimientos y desplazamientos. La capacidad de 
+            encontrar una economía postural permite una mejor utilización del movimiento 
+            cotidiano, una funcionalidad gestual.
+            
+            Desarrollar esta sensibilidad resulta siempre en un incremento de la eficacia 
+            pero también de la percepción que el individuo tiene de el mismo. Influye 
+            directamente nuestro estado psicológico, el cuerpo siendo el sano de las 
+            emociones, sentimientos y de nuestras percepciones del mundo.</p>
+        </details>
+        <details>
+            <summary><h4> ZUMBA </h4></summary>
+            <p> Pasarlo bien es el objetivo principal de la zumba, por lo que no podía 
+                faltar en nuestro catálogo de clases.
+                Zumba es un entrenamiento fitness creado a partir del baile. A través de 
+                diferentes coreografías muy dinámicas busca entrenar el cuerpo mejorando 
+                la tonificación, la elasticidad y la coordinación.
+            </p>
+        </details>
+        <details>
+            <summary><h4> CIRCUITO </h4></summary>
+            <P> Generalmente, la clases de circuito consta de una serie de ejercicios destinadas al  
+                mantenimiento físico. En Zengym damos un paso más, y es que aplicamos posturas de yoga
+                 con un nivel medio de dificultad, con las que a la misma vez que mantenemos nuestro 
+                 estado físico, trabajamos nuestra mente. Por lo que al terminar notamos una relajación total
+                  aun habiendo realizado el ejercicio suficiente como para mantener e incluso mejorar 
+                  nuestro estado físico.
+            </P>
+        </details>
+        <details>
+            <summary><h4> BODY PUMP </h4></summary>
+            <p>El body pump es un programa de entrenamiento físico que combina las actividades propias del aeróbic 
+                con trabajo muscular mediante la realización de ejercicios de levantamiento de pesas.
+                El objetivo de esta práctica es por un lado aumentar la masa muscular y, por otro, quemar una gran
+                 cantidad de calorías que redundan en una pérdida del volumen de grasa corporal.
+            </p>
+        </details>
+        <details>
+            <summary><h4> TRX </h4></summary>
+            <p>El TRX es un sistema de entrenamiento basado en la realización de ejercicios
+                 en suspensión, donde en las actividades que desempeña el deportista, las 
+                 manos o los pies se encuentran sostenidos en un punto de anclaje mientras 
+                 que la otra parte del cuerpo está apoyada en el suelo.
+                 Este tipo de entrenamiento tiene como beneficios un trabajo completo y equilibrado
+                  de cuerpo completo, mejora de movilidad, coordinación y flexibilidad, totalmente 
+                  adaptable a personas de edad avanzada y recuperación de lesiones y disminución del 
+                  riesgo de que se produzcan.
+            </p>
+        </details>
+        <details>
+            <summary><h4> YOGA </h4></summary>
+            <p> Y como no podía faltar en nuestros centros, clases de yoga. El yoga es una
+                 disciplina hindú, originada hace más de 5000 años, que engloba toda una 
+                 filosofía de vida. Gracias a la combinación de asanas, respiración, meditación
+                  y otras técnicas, equilibramos el cuerpo con la mente. Existen numerosos tipos 
+                  de yoga, así como ejercicios, técnicas y posturas que nos ayudan a conseguir un 
+                  mayor control físico y mental, con grandes beneficios, como son quilibrio, fuerza 
+                y elasticidad, reducción de dolores, mejora posturar anátomica, mejora el sistema inmunológico,
+             reduce el estrés, desarrolla concentración, aporta disciplina... ¡Así que ya sabes!, no 
+            dudes probar y estamos seguros que se convertirá en algo indispensable en tu vida. </p>
+        </details>
+        </div>
+        
+       
+        
+	<th:block th:each="class : ${classList}">
+					<tr>
+						<td scope="row" th:text="${class.dayHour}" />
+						<td scope="row" th:text="${class.instructor}" />
+						<td scope="row" th:text="${class.description}" />
+						<td scope="row" th:hidden="${showClassViewInscrInd}">
+							<form action="inscripcionClase" method="post">
+								<button type="submit" id="btnInscrClass" name="classId"
+									th:value="${class.classId}" class="btn btn-success">♥</button>
+							</form>
+						</td>
+						<td scope="row"
+							th:hidden="${session.userLogged['isProfessional']} ? 'false' : 'true'">
+							<form action="editarClase" method="post">
+								<button
+									th:disabled="${session.userLogged['isProfessional']} ? 'false' : 'true'"
+									type="submit" id="btnActClass" name="classId"
+									th:value="${class.classId}" class="btn btn-primary">►</button>
+							</form>
+						</td>
+						<td scope="row"
+							th:hidden="${session.userLogged['isProfessional']} ? 'false' : 'true'">
+							<form action="eliminarClase" method="post">
+								<button
+									th:disabled="${session.userLogged['isProfessional']} ? 'false' : 'true'"
+									type="submit" id="btnDropClass" name="classId"
+									th:value="${class.classId}" class="btn btn-danger">▼</button>
+							</form>
+						</td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+		<label th:hidden="${classInsMsgB}" class="alert alert-danger"
+			th:text="${classInsMsg}" />
+
+		<div
+			th:hidden="${session.userLogged['isProfessional']} ? 'false' : 'true'">
+			<form class="form-signup" th:action="@{/guardarOActualizarClase}"
+				method="POST" name="formUNC">
+
+				<fieldset class:"cabecera"
+					th:disabled="${session.userLogged['isProfessional']} ? 'false' : 'true'">
+					<label for="inpClassId">ID</label> <input class="form-styling"
+						id="inpClassId" type="text" name="classId" placeholder="" readOnly
+						th:value="${classToLoad.classId}" /> <label for="inpDayHour">Día
+						y hora</label> <input class="form-styling" id="inpDayHour" type="text"
+						name="dayHour" placeholder="" required="true"
+						th:value="${classToLoad.dayHour}" /> <label for="inpInst">Monitor/a</label>
+					<input class="form-styling" id="inpInst" type="text"
+						name="instructor" placeholder="" required="true"
+						th:value="${classToLoad.instructor}" /> <label for="inpDesc">Descripción</label>
+					<input class="form-styling" id="inpDesc" type="text"
+						name="description" placeholder="" required="true"
+						th:value="${classToLoad.description}" />
+				</fieldset>
+
+				<!-- BOTON DE REGISTRO -->
+				<button
+					th:disabled="${session.userLogged['isProfessional']} ? 'false' : 'true'"
+					type="submit" name="btnUpdClass" class="btn-signin">Guardar</button>
+
+			</form>
+		</div>
+	</section>
+
+</body>
+<!--BODY-->
+
+<!--SCRIPT-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<!--SCRIPT-->
+
+</html>
